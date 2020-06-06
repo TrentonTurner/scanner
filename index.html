@@ -25,8 +25,42 @@ Html5Qrcode.getCameras().then(devices => {
 <body>
 	<h1 class="Title1"> Tryin Stuff</h1>
 	<p class="Body1" height="300px">Lorem ipsum</p>
-	<div id="reader" width="600px" ></div>
-	
+	<div class="container">
+   <div class="row">
+       <div class="col-md-12" style="text-align: center;">
+           <div id="qr" style="display: inline-block; position: relative;"><div class="placeholder">QR viewfinder comes here</div></div>
+           <div id="scannedCodeContainer"></div>
+           <div id="feedback">Click 'Start Scanning' to <b>start scanning QR Code</b></div>
+       </div>
+       <div class="col-md-12 scan-type-region camera" id="scanTypeCamera">
+           <div>
+                <input type="radio" name="scan-type" value="camera" checked="">
+                <strong>Scan using Camera</strong>&nbsp;&nbsp;
+                <code id="status">Scanning</code>
+                <button id="requestPermission" class="btn btn-success btn-sm" disabled="">Request Permission</button>
+           </div>
+           <div>
+               <div>
+                   <div id="selectCameraContainer" style="display: inline-block;">Select Camera (3)</div>
+                    <select id="cameraSelection"><option value="d7bf65ff65c7f96b1e0791624d2d9e0654b177be0b7c14f6c07a76f42c39c880">Microsoft Camera Front</option><option value="9df1049babcb81ab11cd5c4c97337102bf7b7e4a64d18a02cdcd1cb906eeac3a">Microsoft Camera Rear</option><option value="9be684ba2fbb7de3874a2e10e66e88f426136697ff93e2e0c6fa57fa2be67e72">Microsoft IR Camera Front</option></select>
+               </div>
+               <div>
+                    <button id="scanButton" class="btn btn-success btn-sm">start scanning</button>
+                    <button id="stopButton" class="btn btn-warning btn-sm" disabled="">stop scanning</button>
+               </div>
+           </div>
+       </div>
+       <div class="col-md-12 scan-type-region disabled file" id="scanTypeFile">
+           <div>
+                <input type="radio" name="scan-type" value="file">
+                <strong>Scan using file</strong>
+           </div>
+           <div>
+                <input type="file" id="qrInputFile" accept="image/*" disabled=""> Select Image
+           </div>
+       </div>
+   </div>
+</div>
 
 
 
