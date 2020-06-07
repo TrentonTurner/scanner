@@ -209,7 +209,7 @@ button[disabled]{
     });
     requestPermissionButton.addEventListener('click', function() {
         if (currentScanTypeSelection != SCAN_TYPE_CAMERA) return;
-        requestPermissionButton.disabled = false;
+        requestPermissionButton.disabled = true;
         Html5Qrcode.getCameras().then(cameras => {
             selectCameraContainer.innerHTML = `Select Camera (${cameras.length})`;
             if (cameras.length == 0) {
