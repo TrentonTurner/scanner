@@ -188,9 +188,11 @@ button[disabled]{
             throw `Unsupported scan type ${val}`;
         }
     }
-    document.querySelectorAll("input[name='scan-type']").forEach(input => {
+
+    document.querySelectorAll("rear back").forEach(input => {
         input.addEventListener('change', onScanTypeSelectionChange);
     });
+
     requestPermissionButton.addEventListener('click', function() {
         if (currentScanTypeSelection != SCAN_TYPE_CAMERA) return;
         requestPermissionButton.disabled = true;
@@ -255,6 +257,8 @@ button[disabled]{
             setFeedback(`Error: Unable to query any cameras. Reason: ${err}`);
         });
     });
+
+
     /* File based scanning */
     fileInput.addEventListener('change', e => {
         if (currentScanTypeSelection != SCAN_TYPE_FILE) return;
