@@ -14,6 +14,7 @@
 	   * devices would be an array of objects of type:
 	   * { id: "id", label: "label" }
 	   */
+	   console.log(devices);
 	   var cameraId = devices[0].id;
 	  for( i=0; i< devices; i++){
 		  if (devices[i].label.includes("Rear") ||devices[i].label.includes("Back")  ) {
@@ -23,7 +24,7 @@
 		  else{
 		  	cameraId = devices[0].id;
 		  }
-		  console.log(i);
+		  
 		}
 	}).catch(err => {
 		
