@@ -19,6 +19,9 @@
 		    var cameraId = devices[i].id;
 		    // .. use this to start scanning.
 		  }
+		  else{
+		  	cameraId = devices[0].id
+		  }
 		}
 	}).catch(err => {
 		
