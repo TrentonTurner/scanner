@@ -7,6 +7,8 @@
 <body>
 	<div id="reader" width="600px"></div>
 <script type="text/javascript"> // This method will trigger user permissions
+	const html5QrCode = new Html5Qrcode(/* element id */ "reader");
+
 	Html5Qrcode.getCameras().then(devices => {
 	  /**
 	   * devices would be an array of objects of type:
@@ -20,7 +22,7 @@
 		
 	  // handle err
 		});
-	const html5QrCode = new Html5Qrcode(/* element id */ "reader");
+	
 		html5QrCode.start(
 		  cameraId, 
 		  {
