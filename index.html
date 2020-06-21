@@ -114,7 +114,7 @@ docReady(function() {
 			results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
 		}
 	}
-	var html5QrcodeScanner = new Html5QrcodeScanner(
+	var html5QrcodeScanner = new html5QrcodeScanner(
 		"reader", { fps: 10, qrbox: 250 }, /* verbose= */ true);
 	html5QrcodeScanner.render(onScanSuccess);
 });
