@@ -14,15 +14,15 @@
 	   * devices would be an array of objects of type:
 	   * { id: "id", label: "label" }
 	   */
-	   console.log(devices[0].id);
-	   var cameraId = devices[0].id;
+	   console.log(devices[1].id);
+	   var cameraId = devices[1].id;
 	  for( i=0; i< devices; i++){
 		  if (devices[i].label.includes("Rear") ||devices[i].label.includes("Back")  ) {
 		    var cameraId = devices[i].id;
 		    // .. use this to start scanning.
 		  }
 		  else{
-		  	cameraId =;
+		  	cameraId = devices[1].id;;
 		  }
 		  
 		}
@@ -35,7 +35,7 @@
 		  cameraId, 
 		  {
 		    fps: 10,    // Optional frame per seconds for qr code scanning
-		    qrbox: 250  // Optional if you want bounded box UI
+		    qrbox: 0  // Optional if you want bounded box UI
 		  },
 		  qrCodeMessage => {
 		    // do something when code is read
