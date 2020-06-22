@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--<html>
+<!----><html>
 <head>
 	<script src="minified/html5-qrcode.min.js"></script>
 	<title> Tryin</title>
@@ -49,10 +49,36 @@
      	
  		});
 
+
+function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+}
+docReady(function() {
+	hljs.initHighlightingOnLoad();
+	var results = document.getElementById('scanned-result');
+	var lastMessage;
+	var codesFound = 0;
+	function onScanSuccess(qrCodeMessage) {
+		if (lastMessage !== qrCodeMessage) {
+			lastMessage = qrCodeMessage;
+			++codesFound;
+			results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
+		}
+	}
+	var html5QrcodeScanner = new Html5QrcodeScanner("reader", {fps: 10, qrbox: 250}, true); /*= new Html5QrcodeScanner(
+		"reader", { fps: 10, qrbox: 250 }, /* verbose= true);*/ 
+	html5QrcodeScanner.render(onScanSuccess);
+});
 </script>
 </body>
-</html> -->
-<html>
+</html> 
+<!--<html>
   <head></head>
     <title>Html-Qrcode Demo</title>
  <body data-instant-allow-query-string="" data-instant-allow-external-links="">
