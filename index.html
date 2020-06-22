@@ -31,14 +31,14 @@
 	   * { id: "id", label: "label" }
 	   */
 	   console.log(devices[1].id);
-	   var cameraId = devices[1].id;
+	   var cameraId = devices[0].id;
 	  for( i=0; i< devices; i++){
 		  if (devices[i].label.includes("Rear") ||devices[i].label.includes("Back")  ) {
 		    var cameraId = devices[i].id;
 		    // .. use this to start scanning.
 		  }
 		  else{
-		  	cameraId = devices[1].id;
+		  	cameraId = devices[0].id;
 		  }
 		  
 		}
