@@ -87,9 +87,9 @@ docReady(function() {
 			results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
 		}
 	}
-	var html5Qrcode = new Html5Qrcode ("reader", {fps: 10, qrbox: 250}, true); /*= new Html5QrcodeScanner(
+	var html5QrcodeScanner = new Html5Qrcode("reader", {fps: 10, qrbox: 250}, true); /*= new Html5QrcodeScanner(
 		"reader", { fps: 10, qrbox: 250 }, /* verbose= true);*/ 
-	html5Qrcode.render(onScanSuccess);
+	html5QrcodeScanner.render(onScanSuccess);
 });
 </script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
