@@ -124,8 +124,8 @@ docReady(function() {
 			results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
 		}
 	}
-	var html5QrcodeScanner = new Html5QrcodeScanner(
-		"reader", { fps: 10, qrbox: 250 }, /* verbose= */ true);
+	var html5QrcodeScanner = new Html5QrcodeScanner("reader", {fps: 10, qrbox: 250}, true); /*= new Html5QrcodeScanner(
+		"reader", { fps: 10, qrbox: 250 }, /* verbose= true);*/ 
 	html5QrcodeScanner.render(onScanSuccess);
 });
 </script>
