@@ -56,7 +56,7 @@
   <head></head>
     <title>Html-Qrcode Demo</title>
  <body data-instant-allow-query-string="" data-instant-allow-external-links="">
-
+  
    <main class="default-content" aria-label="Content">
      <div class="wrapper-content">
        <style>
@@ -87,6 +87,60 @@
 </div>
 
 
+<div style="display: block; height: 30px"></div>
+<div class="container">
+   <h2>References</h2>
+   <ol>
+       <li>Project on Github - <a href="https://github.com/mebjas/html5-qrcode">mebjas/html5-qrcode</a></li>
+       <li>How to use - <a href="https://blog.minhazav.dev/HTML5-QR-Code-scanning-launched-v1.0.1/">blog.minhazav.dev/HTML5-QR-Code-scanning-launched-v1.0.1</a></li>
+       <li>File based scanning - <a href="https://blog.minhazav.dev/HTML5-QR-Code-scanning-support-for-local-file-and-default-camera/">blog.minhazav.dev/HTML5-QR-Code-scanning-support-for-local-file-and-default-camera</a></li>
+   </ol>
+</div>
+<h2>Comments</h2>
+<div class="utterances" style="height: 268px;">
+    <iframe class="utterances-frame" title="Comments" scrolling="no" src="https://utteranc.es/utterances.html?src=https%3A%2F%2Futteranc.es%2Fclient.js&amp;repo=mebjas%2Fmebjas.github.io&amp;issue-term=title&amp;label=test&amp;theme=github-light&amp;crossorigin=anonymous&amp;url=https%3A%2F%2Fblog.minhazav.dev%2Fresearch%2Fhtml5-qrcode&amp;origin=https%3A%2F%2Fblog.minhazav.dev&amp;pathname=research%2Fhtml5-qrcode&amp;title=HTML5%20QR%20Code%20Demo%20%7C%20Minhaz%E2%80%99s%20Blog&amp;description=Demo%20of%20a%20cross%20platform%20HTML5%20QR%20Code%20reader&amp;og%3Atitle=HTML5%20QR%20Code%20Demo"></iframe>
+  </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+<script src="/assets/research/html5qrcode/html5-qrcode.min.js"></script>
+<script>
+function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+}
+docReady(function() {
+	hljs.initHighlightingOnLoad();
+	var results = document.getElementById('scanned-result');
+	var lastMessage;
+	var codesFound = 0;
+	function onScanSuccess(qrCodeMessage) {
+		if (lastMessage !== qrCodeMessage) {
+			lastMessage = qrCodeMessage;
+			++codesFound;
+			results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
+		}
+	}
+	var html5QrcodeScanner = new Html5QrcodeScanner(
+		"reader", { fps: 10, qrbox: 250 }, /* verbose= */ true);
+	html5QrcodeScanner.render(onScanSuccess);
+});
+</script>
+     
+    <script src="/assets/js/anchorize.js"></script>
+
+    <script src="/assets/js/instantpage.js" type="module"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-158605510-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-158605510-1');
+    </script>
+ 
 
 </body>
  
