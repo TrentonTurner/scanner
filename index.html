@@ -36,33 +36,39 @@
 				<span>QR Code Scanner</span>
 				<span id="reader__status_span" style="float: right; padding: 5px 7px; font-size: 14px; background: rgb(238, 238, 255); border: 1px solid rgba(0, 0, 0, 0); color: rgb(17, 17, 17);">IDLE</span>
 				<div id="reader__header_message" style="display: none; font-size: 14px; padding: 2px 10px; margin-top: 4px; border-top: 1px solid rgb(246, 246, 246); background: rgba(0, 0, 0, 0); color: rgb(17, 17, 17);">Requesting camera permissions...</div>
+				</div>
+				<div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center;">
+					<br>
+					<img width="64" src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/assets/camera-scan.gif" style="opacity: 0.3;">
+				</div>
+				<div id="reader__dashboard" style="width: 100%;">
+					<div id="reader__dashboard_section" style="width: 100%; padding: 10px; text-align: left;">
+						<div>
+							<div id="reader__dashboard_section_csr" style="display: block; text-align: center;">
+								<span style="margin-right: 10px;">Select Camera (3) &nbsp;
+									<select id="reader__camera_selection">
+										<option value="d7bf65ff65c7f96b1e0791624d2d9e0654b177be0b7c14f6c07a76f42c39c880">Microsoft Camera Front</option>
+										<option value="9df1049babcb81ab11cd5c4c97337102bf7b7e4a64d18a02cdcd1cb906eeac3a">Microsoft Camera Rear</option>
+										<option value="9be684ba2fbb7de3874a2e10e66e88f426136697ff93e2e0c6fa57fa2be67e72">Microsoft IR Camera Front</option>
+									</select>
+								</span>
+								<span>
+									<button>Start Scanning</button>
+									<button disabled="" style="display: none;">Stop Scanning</button>
+								</span>
+							</div>
+							<div id="reader__dashboard_section_fsr" style="text-align: center; display: none;">
+								<input id="reader__filescan_input" accept="image/*" type="file" disabled="" style="width: 200px;"><span>&nbsp; Select Image
+								</span>
+							</div>
+						</div>
+						<!--<div style="text-align: center;">
+							<a id="reader__dashboard_section_swaplink" href="#scan-using-file" style="text-decoration: underline;">Scan an Image File
+							</a>
+						</div>-->
+					</div>
+				</div>
 			</div>
-			<div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center;">
-				<br>
-				<img width="64" src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/assets/camera-scan.gif" style="opacity: 0.3;">
-			</div>
-			<div id="reader__dashboard" style="width: 100%;"><div id="reader__dashboard_section" style="width: 100%; padding: 10px; text-align: left;"><div><div id="reader__dashboard_section_csr" style="display: block; text-align: center;">
-				<span style="margin-right: 10px;">Select Camera (3) &nbsp;
-					<select id="reader__camera_selection">
-						<option value="d7bf65ff65c7f96b1e0791624d2d9e0654b177be0b7c14f6c07a76f42c39c880">Microsoft Camera Front</option>
-						<option value="9df1049babcb81ab11cd5c4c97337102bf7b7e4a64d18a02cdcd1cb906eeac3a">Microsoft Camera Rear</option>
-						<option value="9be684ba2fbb7de3874a2e10e66e88f426136697ff93e2e0c6fa57fa2be67e72">Microsoft IR Camera Front</option>
-					</select>
-				</span>
-				<span>
-					<button>Start Scanning</button>
-					<button disabled="" style="display: none;">Stop Scanning</button>
-				</span>
-			</div>
-			
-		</div>
-		<div style="text-align: center;">
-			<a id="reader__dashboard_section_swaplink" href="#scan-using-file" style="text-decoration: underline;">Scan an Image File
-			</a>
-		</div>
-	</div>
-</div>
-</div>
 			<div class="empty"></div>
 			<div id="scanned-result"></div>
 		</div>
