@@ -151,14 +151,6 @@ docReady(function() {
   </div>
 
 <!---- ----->
-<div id="observablehq-cfc59ce9"></div>
-<script type="module">
-import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import define from "https://api.observablehq.com/@observablehq/downloading-and-embedding-notebooks.js?v=3";
-const inspect = Inspector.into("#observablehq-cfc59ce9");
-(new Runtime).module(define, name => name === "intro" ? inspect() : undefined);
-</script>
-
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
 <script src="minified/html5-qrcode.min.js"></script>
