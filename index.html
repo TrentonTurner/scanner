@@ -1,101 +1,5 @@
 <!DOCTYPE html>
-<!--<html>
-<head>
-	<script src="minified/html5-qrcode.min.js"></script>
-	<title> Tryin</title>
-</head>
-<body>  <style>
-#reader {
-    width: 640px;
-}
-@media(max-width: 600px) {
-	#reader {
-		width: 300px;
-	}
-}
-.empty {
-    display: block;
-    width: 100%;
-    height: 20px;
-}
-</style>
-	<div id="reader" width="600px"></div>
-	<div class="empty"></div>
-			<div id="scanned-result"></div>
-<script type="text/javascript"> // This method will trigger user permissions
-	const html5QrCode = new Html5Qrcode(/* element id */ "reader");
 
-	Html5Qrcode.getCameras().then(devices => {
-	  /**
-	   * devices would be an array of objects of type:
-	   * { id: "id", label: "label" }
-	   
-	   console.log(devices[1].id);
-	   var cameraId = devices[0].id;*/
-	  for( i=0; i< devices; i++){
-		  if (devices[i].label.includes("Rear") ||devices[i].label.includes("Back")  ) {
-		    var cameraId = devices[i].id;
-		    // .. use this to start scanning.
-		  }
-		  else{
-		  	cameraId = devices[0].id;
-		  }
-		  
-		}
-		
-		
-	  // handle err
-		
-	
-		html5QrCode.start(
-		  cameraId, 
-		  {
-		    fps: 10,    // Optional frame per seconds for qr code scanning
-		    qrbox: 250  // Optional if you want bounded box UI
-		  },
-		  qrCodeMessage => {
-		    // do something when code is read
-		  },
-		  errorMessage => {
-		    // parse error, ignore it.
-		  })
-		.catch(err => {
-		  // Start failed, handle it.
-		});
-     	
- 		});
-
-
-function docReady(fn) {
-    // see if DOM is already available
-    if (document.readyState === "complete" || document.readyState === "interactive") {
-        // call on next available tick
-        setTimeout(fn, 1);
-    } else {
-        document.addEventListener("DOMContentLoaded", fn);
-    }
-}
-docReady(function() {
-	hljs.initHighlightingOnLoad();
-	var results = document.getElementById('scanned-result');
-	var lastMessage;
-	var codesFound = 0;
-	function onScanSuccess(qrCodeMessage) {
-		if (lastMessage !== qrCodeMessage) {
-			lastMessage = qrCodeMessage;
-			++codesFound;
-			results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
-		}
-	}
-	var html5QrcodeScanner = new Html5Qrcode("reader", {fps: 10, qrbox: 250}, true); /*= new Html5QrcodeScanner(
-		"reader", { fps: 10, qrbox: 250 }, /* verbose= true);*/ 
-	html5QrcodeScanner.render(onScanSuccess);
-});
-</script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/languages/go.min.js"></script>
-
-</body>
 </html> -->
 <html>
   <head>
@@ -128,7 +32,40 @@ docReady(function() {
 <div class="container">
 	<div class="row">
 		<div class="col-md-12" style="text-align: center;margin-bottom: 20px;">
-			<div id="reader" style="display: inline-block; position: relative; padding: 0px; border: 1px solid silver;"><div style="text-align: left; margin: 0px; padding: 5px; font-size: 20px; border-bottom: 1px solid rgba(192, 192, 192, 0.18);"><span>QR Code Scanner</span><span id="reader__status_span" style="float: right; padding: 5px 7px; font-size: 14px; background: rgb(238, 238, 255); border: 1px solid rgba(0, 0, 0, 0); color: rgb(17, 17, 17);">IDLE</span><div id="reader__header_message" style="display: none; font-size: 14px; padding: 2px 10px; margin-top: 4px; border-top: 1px solid rgb(246, 246, 246); background: rgba(0, 0, 0, 0); color: rgb(17, 17, 17);">Requesting camera permissions...</div></div><div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center;"><br><img width="64" src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/assets/camera-scan.gif" style="opacity: 0.3;"></div><div id="reader__dashboard" style="width: 100%;"><div id="reader__dashboard_section" style="width: 100%; padding: 10px; text-align: left;"><div><div id="reader__dashboard_section_csr" style="display: block; text-align: center;"><span style="margin-right: 10px;">Select Camera (3) &nbsp;<select id="reader__camera_selection"><option value="d7bf65ff65c7f96b1e0791624d2d9e0654b177be0b7c14f6c07a76f42c39c880">Microsoft Camera Front</option><option value="9df1049babcb81ab11cd5c4c97337102bf7b7e4a64d18a02cdcd1cb906eeac3a">Microsoft Camera Rear</option><option value="9be684ba2fbb7de3874a2e10e66e88f426136697ff93e2e0c6fa57fa2be67e72">Microsoft IR Camera Front</option></select></span><span><button>Start Scanning</button><button disabled="" style="display: none;">Stop Scanning</button></span></div><div id="reader__dashboard_section_fsr" style="text-align: center; display: none;"><input id="reader__filescan_input" accept="image/*" type="file" disabled="" style="width: 200px;"><span>&nbsp; Select Image</span></div></div><div style="text-align: center;"><a id="reader__dashboard_section_swaplink" href="#scan-using-file" style="text-decoration: underline;">Scan an Image File</a></div></div></div></div>
+			<div id="reader" style="display: inline-block; position: relative; padding: 0px; border: 1px solid silver;"><div style="text-align: left; margin: 0px; padding: 5px; font-size: 20px; border-bottom: 1px solid rgba(192, 192, 192, 0.18);">
+				<span>QR Code Scanner</span>
+				<span id="reader__status_span" style="float: right; padding: 5px 7px; font-size: 14px; background: rgb(238, 238, 255); border: 1px solid rgba(0, 0, 0, 0); color: rgb(17, 17, 17);">IDLE</span>
+				<div id="reader__header_message" style="display: none; font-size: 14px; padding: 2px 10px; margin-top: 4px; border-top: 1px solid rgb(246, 246, 246); background: rgba(0, 0, 0, 0); color: rgb(17, 17, 17);">Requesting camera permissions...</div>
+			</div>
+			<div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center;">
+				<br>
+				<img width="64" src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/assets/camera-scan.gif" style="opacity: 0.3;">
+			</div>
+			<div id="reader__dashboard" style="width: 100%;"><div id="reader__dashboard_section" style="width: 100%; padding: 10px; text-align: left;"><div><div id="reader__dashboard_section_csr" style="display: block; text-align: center;">
+				<span style="margin-right: 10px;">Select Camera (3) &nbsp;
+					<select id="reader__camera_selection">
+						<option value="d7bf65ff65c7f96b1e0791624d2d9e0654b177be0b7c14f6c07a76f42c39c880">Microsoft Camera Front</option>
+						<option value="9df1049babcb81ab11cd5c4c97337102bf7b7e4a64d18a02cdcd1cb906eeac3a">Microsoft Camera Rear</option>
+						<option value="9be684ba2fbb7de3874a2e10e66e88f426136697ff93e2e0c6fa57fa2be67e72">Microsoft IR Camera Front</option>
+					</select>
+				</span>
+				<span>
+					<button>Start Scanning</button>
+					<button disabled="" style="display: none;">Stop Scanning</button>
+				</span>
+			</div>
+			<div id="reader__dashboard_section_fsr" style="text-align: center; display: none;">
+				<input id="reader__filescan_input" accept="image/*" type="file" disabled="" style="width: 200px;"><span>&nbsp; Select Image
+				</span>
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<a id="reader__dashboard_section_swaplink" href="#scan-using-file" style="text-decoration: underline;">Scan an Image File
+			</a>
+		</div>
+	</div>
+</div>
+</div>
 			<div class="empty"></div>
 			<div id="scanned-result"></div>
 		</div>
@@ -136,23 +73,7 @@ docReady(function() {
 </div>
 
 
-<div style="display: block; height: 30px"></div>
-<div class="container">
-   <h2>References</h2>
-   <ol>
-       <li>Project on Github - <a href="https://github.com/mebjas/html5-qrcode">mebjas/html5-qrcode</a></li>
-       <li>How to use - <a href="https://blog.minhazav.dev/HTML5-QR-Code-scanning-launched-v1.0.1/">blog.minhazav.dev/HTML5-QR-Code-scanning-launched-v1.0.1</a></li>
-       <li>File based scanning - <a href="https://blog.minhazav.dev/HTML5-QR-Code-scanning-support-for-local-file-and-default-camera/">blog.minhazav.dev/HTML5-QR-Code-scanning-support-for-local-file-and-default-camera</a></li>
-   </ol>
-</div>
-<h2>Comments</h2>
-<div class="utterances" style="height: 268px;">
-    <iframe class="utterances-frame" title="Comments" scrolling="no" src="https://utteranc.es/utterances.html?src=https%3A%2F%2Futteranc.es%2Fclient.js&amp;repo=mebjas%2Fmebjas.github.io&amp;issue-term=title&amp;label=test&amp;theme=github-light&amp;crossorigin=anonymous&amp;url=https%3A%2F%2Fblog.minhazav.dev%2Fresearch%2Fhtml5-qrcode&amp;origin=https%3A%2F%2Fblog.minhazav.dev&amp;pathname=research%2Fhtml5-qrcode&amp;title=HTML5%20QR%20Code%20Demo%20%7C%20Minhaz%E2%80%99s%20Blog&amp;description=Demo%20of%20a%20cross%20platform%20HTML5%20QR%20Code%20reader&amp;og%3Atitle=HTML5%20QR%20Code%20Demo"></iframe>
-  </div>
-
-<!---- ----->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>-->
 <script src="minified/html5-qrcode.min.js"></script>
 <script>
 function docReady(fn) {
@@ -182,7 +103,7 @@ docReady(function() {
 });
 </script>
      
-    <script src="JS/anchorize.js"></script>
+   <!-- <script src="JS/anchorize.js"></script>
 
     <script src="JS/instantpage.js" type="module"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-158605510-1"></script>
@@ -192,8 +113,9 @@ docReady(function() {
       gtag('js', new Date());
       gtag('config', 'UA-158605510-1');
     </script>
+-->
  <div id="qr-reader" style="width:500px"></div>
- <script src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/minified/html5-qrcode.min.js"></script>
+
 
 </body>
  
