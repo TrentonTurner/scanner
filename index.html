@@ -106,7 +106,7 @@
 		   if (lastMessage !== qrCodeMessage) {
 			lastMessage = qrCodeMessage;
 			++codesFound;
-			results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
+			results.innerHTML += `<div>${qrCodeMessage}</div>`;
 			}
 		  },
 		  errorMessage => {
