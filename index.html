@@ -10,21 +10,31 @@
   	<script src="minified/html5-qrcode.min.js"></script>
   	<script src="html5-qrcode-demo.js"></script>
   	<script>
-  		var resultContainer = document.getElementById('qr-reader-results');
-		var lastResult, countResults = 0;
+  		function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+	} 
 
-		function onScanSuccess(qrCodeMessage) {
-		    if (qrCodeMessage !== lastResult) {
-		        ++countResults;
-		        lastResult = qrCodeMessage;
-		        resultContainer.innerHTML 
-		            += `<div>[${countResults}] - ${qrCodeMessage}</div>`;
-		    }
-		}
+	docReady(function() {
+	    var resultContainer = document.getElementById('qr-reader-results');
+	    var lastResult, countResults = 0;
+	    function onScanSuccess(qrCodeMessage) {
+	        if (qrCodeMessage !== lastResult) {
+	            ++countResults;
+	            lastResult = qrCodeMessage;
+	            resultContainer += `<div>[${countResults}] - ${qrCodeMessage}</div>`;
+	        }
+	    }
 
-		var html5QrcodeScanner = new Html5QrcodeScanner(
-		    "qr-reader", { fps: 10, qrbox: 250 });
-		html5QrcodeScanner.render(onScanSuccess);
+	    var html5QrcodeScanner = new Html5QrcodeScanner(
+	        "qr-reader", { fps: 10, qrbox: 250 });
+	    html5QrcodeScanner.render(onScanSuccess);
+	});
   	</script>
   </body>
 </html>
