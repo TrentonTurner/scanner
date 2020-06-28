@@ -64,7 +64,7 @@
 </style>
 	<div id="reader" width="600px"></div>
 	<div class="empty"></div>
-			<div id="scanned-result"></div>
+	<div id="scanned-result"></div>
 <script type="text/javascript"> // This method will trigger user permissions
 	const html5QrCode = new Html5Qrcode(/* element id */ "reader");
 
@@ -93,15 +93,21 @@
 		  cameraId, 
 		  {
 		    fps: 10,    // Optional frame per seconds for qr code scanning
-		    qrbox: 250  // Optional if you want bounded box UI
+		    qrbox: 200  // Optional if you want bounded box UI
 		  },
 		  qrCodeMessage => {
 		    // do something when code is read
-		   /* if (lastMessage !== qrCodeMessage) {
+		   /* */
+			hljs.initHighlightingOnLoad();
+			var results = document.getElementById('scanned-result');
+			var lastMessage;
+			var codesFound = 0;
+
+		   if (lastMessage !== qrCodeMessage) {
 			lastMessage = qrCodeMessage;
 			++codesFound;
 			results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
-			}*/
+			}
 		  },
 		  errorMessage => {
 		    // parse error, ignore it.
