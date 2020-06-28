@@ -97,6 +97,11 @@
 		  },
 		  qrCodeMessage => {
 		    // do something when code is read
+		    if (lastMessage !== qrCodeMessage) {
+			lastMessage = qrCodeMessage;
+			++codesFound;
+			results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
+		}
 		  },
 		  errorMessage => {
 		    // parse error, ignore it.
